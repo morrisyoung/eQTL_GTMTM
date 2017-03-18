@@ -1,5 +1,5 @@
 # eQTL_GTMTM
-Genome-wide and Transcriptome-wide Mixed-layered Tensor Modeling
+**G**enome-wide and **T**ranscriptome-wide **M**ixed-layered **T**ensor **M**odeling (GTMTM)
 
 We will do tissue-specific linear factor modeling and tensor modeling, all conditional on cis- direct linear modeling
 
