@@ -18,6 +18,17 @@
 
 
 
+
+## TODO this;
+## do the train/test split first of all
+
+
+
+
+
+
+
+
 ##===============
 ##==== libraries
 ##===============

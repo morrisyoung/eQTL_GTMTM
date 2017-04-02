@@ -7,6 +7,12 @@ import timeit
 
 
 
+## this program was checked to be correct
+
+
+## this is for tensor modeling, so the X is always input for both train set and test set
+
+
 
 
 
@@ -51,11 +57,11 @@ with tf.device("/cpu:0"):
 
 
 	## beta1
-	place_beta1 = tf.placeholder(tf.float32, shape=(len(beta1_init), len(beta1_init[0])))
+	place_beta1 = tf.placeholder(tf.float32, shape=beta1_init.shape)
 	beta1 = tf.Variable(place_beta1)
 
 	## m_factor
-	place_m_factor = tf.placeholder(tf.float32, shape=(len(m_factor_init), len(m_factor_init[0])))
+	place_m_factor = tf.placeholder(tf.float32, shape=m_factor_init.shape)
 	m_factor = tf.Variable(place_m_factor)
 
 	## expand m_factor
@@ -63,9 +69,12 @@ with tf.device("/cpu:0"):
 	m_factor_ext = tf.concat([m_factor, tensor_constant], 1)
 
 	## beta2
-	place_beta2 = tf.placeholder(tf.float32, shape=(len(beta2_init), len(beta2_init[0]), len(beta2_init[0][0])))
+	place_beta2 = tf.placeholder(tf.float32, shape=beta2_init.shape)
 	beta2 = tf.Variable(place_beta2)
 
+
+
+	## for tensor decomp, instead of beta2, we will have two parameter matrix: beta_2 and beta_3 (gene and tissue fm)
 
 
 
@@ -102,7 +111,7 @@ with tf.device("/cpu:0"):
 	## sparsity (it seems we also penalize the intercept)
 	coeff_regularizer = tf.constant(.001)
 	norm_sums = tf.add(tf.reduce_sum(tf.abs(beta1)),
-	                   tf.reduce_sum(tf.abs(beta2)))
+						tf.reduce_sum(tf.abs(beta2)))
 	cost_regularizer = tf.multiply(coeff_regularizer, norm_sums)
 
 

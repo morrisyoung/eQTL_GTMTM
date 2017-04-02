@@ -6,6 +6,11 @@ import math
 
 
 
+## multi-tissue
+
+
+
+
 
 ##==== scale of the input data (real data)
 I = 24451
